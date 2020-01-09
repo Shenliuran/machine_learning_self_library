@@ -9,7 +9,7 @@
         // "watch": true
     },
     "files": [
-        "vector.ts",
+        "math_tools/vector.ts",
         "perceptron.ts",
         "index.ts"
     ]

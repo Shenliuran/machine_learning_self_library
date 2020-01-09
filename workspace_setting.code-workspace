@@ -1,0 +1,14 @@
+{
+    "settings": {
+        "javascript.format.enable": true,
+        "javascript.suggest.autoImports": true,
+        "javascript.suggest.paths": true,
+        "typescript.autoClosingTags": true,
+        "typescript.format.enable": true
+    },
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
+}

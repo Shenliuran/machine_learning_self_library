@@ -1,0 +1,26 @@
+{
+  "name": "machine_learning",
+  "version": "1.0.0",
+  "description": "machine_learning library for myself",
+  "main": "sketch.js",
+  "dependencies": {
+    "@types/node": "^13.1.4",
+    "webpack": "^4.41.5"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shenliuran/self_js_ts_library.git"
+  },
+  "author": "liuran shen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shenliuran/self_js_ts_library/issues"
+  },
+  "homepage": "https://github.com/Shenliuran/self_js_ts_library#readme"
+}

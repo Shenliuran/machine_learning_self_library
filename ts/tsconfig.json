@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outFile": "../dist/sketch.js",
+        "sourceMap": true,
+        "charset": "utf-8",
+        "rootDir": ".",
+        "outDir": "..",
+        // "watch": true
+    },
+    "files": [
+        "vector.ts",
+        "perceptron.ts",
+        "index.ts"
+    ]
+}

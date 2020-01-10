@@ -1,16 +1,19 @@
 {
     "compilerOptions": {
+        "allowJs": true,
         "target": "es6",
         "outFile": "../dist/sketch.js",
         "sourceMap": true,
         "charset": "utf-8",
         "rootDir": ".",
         "outDir": "..",
+        "declaration": true,
         // "watch": true
     },
     "files": [
-        "math_tools/vector.ts",
-        "perceptron.ts",
+        "tools/vector.ts",
+        "component/trainingDataType.ts",
+        "component/perceptron.ts",
         "index.ts"
     ]
 }

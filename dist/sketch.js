@@ -53,6 +53,12 @@ Vector.angle = function (v, w) {
     let temp = v.dot(w);
     return Math.acos(temp / (v.norm() * w.norm()));
 };
+class TrainingData {
+    constructor(fVec, label) {
+        this.fVec = fVec;
+        this.label = label;
+    }
+}
 class Perceptron {
     constructor(inputs, learningRate) {
         this.conpute = function () {
@@ -84,7 +90,6 @@ class Perceptron {
         };
         this.isClassifiedError = function (traingData) {
             let pre = this.predict(traingData);
-            // console.log("predict: " + pre + "\n label: " + traingData.label);
             let coupler = traingData.label * pre;
             if (coupler <= 0)
                 return true;
@@ -107,12 +112,6 @@ class Perceptron {
     }
     get paramB() {
         return this.b;
-    }
-}
-class TrainingData {
-    constructor(fVec, label) {
-        this.fVec = fVec;
-        this.label = label;
     }
 }
 var canvas = document.querySelector("canvas");

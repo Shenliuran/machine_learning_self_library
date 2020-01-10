@@ -5,7 +5,8 @@
   "main": "sketch.js",
   "dependencies": {
     "@types/node": "^13.1.4",
-    "webpack": "^4.41.5"
+    "webpack": "^4.41.5",
+    "webpack-system-register": "^1.6.0"
   },
   "devDependencies": {
     "webpack-cli": "^3.3.10"

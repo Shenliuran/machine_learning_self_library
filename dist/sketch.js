@@ -1,58 +1,58 @@
 class Vector {
     constructor(components = new Array()) {
-        this.add = function (v) {
-            let temp = new Vector([]);
-            for (let i = 0; i < this.components.length; i++)
-                temp.components[i] = this.components[i] + v.components[i];
-            return temp;
-        };
-        this.multi = function (v) {
-            let temp = new Vector([]);
-            for (let i = 0; i < this.components.length; i++)
-                temp.components[i] = this.components[i] - v.components[i];
-            return temp;
-        };
-        this.norm = function () {
-            let sum = 0;
-            for (let i = 0; i < this.components.length; i++)
-                sum += this.components[i] * this.components[i];
-            return Math.sqrt(sum);
-        };
-        this.dot = function (v) {
-            if (v instanceof Vector) {
-                let sum = 0;
-                for (let i = 0; i < this.components.length; i++)
-                    sum += this.components[i] * v.components[i];
-                return sum;
-            }
-            else {
-                let sum = new Vector([]);
-                for (let i = 0; i < this.components.length; i++)
-                    sum.components[i] = this.components[i] * v;
-                return sum;
-            }
-        };
-        this.cross = function (v) {
-            let temp = new Vector([]);
-            if (this.components.length == 3) {
-                temp.components[0] = this.components[1] * v.components[2] - this.components[2] * v.components[1];
-                temp.components[1] = this.components[2] * v.components[0] - this.components[0] * v.components[2];
-                temp.components[2] = this.components[0] * v.components[1] - this.components[1] * v.components[0];
-                return temp;
-            }
-            else
-                throw new Error("Dimension Error: " + this.components.length + " dimensions");
-        };
         this.toArray = function () {
             return this.components;
         };
         this.components = components;
     }
+    add(v) {
+        let temp = new Vector([]);
+        for (let i = 0; i < this.components.length; i++)
+            temp.components[i] = this.components[i] + v.components[i];
+        return temp;
+    }
+    multi(v) {
+        let temp = new Vector([]);
+        for (let i = 0; i < this.components.length; i++)
+            temp.components[i] = this.components[i] - v.components[i];
+        return temp;
+    }
+    norm() {
+        let sum = 0;
+        for (let i = 0; i < this.components.length; i++)
+            sum += this.components[i] * this.components[i];
+        return Math.sqrt(sum);
+    }
+    dot(v) {
+        if (v instanceof Vector) {
+            let sum = 0;
+            for (let i = 0; i < this.components.length; i++)
+                sum += this.components[i] * v.components[i];
+            return sum;
+        }
+        else {
+            let sum = new Vector([]);
+            for (let i = 0; i < this.components.length; i++)
+                sum.components[i] = this.components[i] * v;
+            return sum;
+        }
+    }
+    cross(v) {
+        let temp = new Vector([]);
+        if (this.components.length == 3) {
+            temp.components[0] = this.components[1] * v.components[2] - this.components[2] * v.components[1];
+            temp.components[1] = this.components[2] * v.components[0] - this.components[0] * v.components[2];
+            temp.components[2] = this.components[0] * v.components[1] - this.components[1] * v.components[0];
+            return temp;
+        }
+        else
+            throw new Error("Dimension Error: " + this.components.length + " dimensions");
+    }
+    static angle(v, w) {
+        let temp = v.dot(w);
+        return Math.acos(temp / (v.norm() * w.norm()));
+    }
 }
-Vector.angle = function (v, w) {
-    let temp = v.dot(w);
-    return Math.acos(temp / (v.norm() * w.norm()));
-};
 class TrainingData {
     constructor(fVec, label) {
         this.fVec = fVec;
@@ -61,41 +61,6 @@ class TrainingData {
 }
 class Perceptron {
     constructor(inputs, learningRate) {
-        this.conpute = function () {
-            let i = 0;
-            let n = this.inputs.length;
-            let currect;
-            while (true) {
-                currect = 0;
-                this.inputs.forEach((input) => {
-                    if (this.isClassifiedError(input)) {
-                        this.weights = this.weights.add(input.fVec.dot(this.lr * input.label));
-                        this.b += this.lr * input.label;
-                    }
-                    else
-                        currect++;
-                });
-                if (currect == n)
-                    break;
-            }
-        };
-        this.predict = function (traingData) {
-            return this.sign(this.weights.dot(traingData.fVec) + this.b);
-        };
-        this.sign = function (n) {
-            if (n >= 0)
-                return 1;
-            else
-                return -1;
-        };
-        this.isClassifiedError = function (traingData) {
-            let pre = this.predict(traingData);
-            let coupler = traingData.label * pre;
-            if (coupler <= 0)
-                return true;
-            else
-                false;
-        };
         this.inputs = inputs;
         this.weights = new Vector(new Array());
         for (let i = 0; i < this.inputs[0].fVec.toArray().length; i++)
@@ -103,6 +68,41 @@ class Perceptron {
         this.lr = learningRate;
         this.b = Math.random();
         this.conpute();
+    }
+    conpute() {
+        let i = 0;
+        let n = this.inputs.length;
+        let currect;
+        while (true) {
+            currect = 0;
+            this.inputs.forEach((input) => {
+                if (this.isClassifiedError(input)) {
+                    this.weights = this.weights.add(input.fVec.dot(this.lr * input.label));
+                    this.b += this.lr * input.label;
+                }
+                else
+                    currect++;
+            });
+            if (currect == n)
+                break;
+        }
+    }
+    predict(traingData) {
+        return this.sign(this.weights.dot(traingData.fVec) + this.b);
+    }
+    sign(n) {
+        if (n >= 0)
+            return 1;
+        else
+            return -1;
+    }
+    isClassifiedError(traingData) {
+        let pre = this.predict(traingData);
+        let coupler = traingData.label * pre;
+        if (coupler <= 0)
+            return true;
+        else
+            false;
     }
     set learningRate(lr) {
         this.lr = lr;

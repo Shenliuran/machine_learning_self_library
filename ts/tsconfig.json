@@ -12,8 +12,11 @@
     },
     "files": [
         "tools/vector.ts",
-        "component/trainingDataType.ts",
-        "component/perceptron.ts",
+        "tools/matrix.ts",
+        "component/training-data-type.ts",
+        // "component/perceptron.ts",
+        "component/abstract-layer.ts",
+        "component/layers.ts",
         "index.ts"
     ]
 }

@@ -55,7 +55,3 @@ class Vector {
         return Math.acos(temp / (v.norm() * w.norm()));
     }
 }
-
-let v = new Vector([1, 1]);
-v = v.dot(3);
-console.log(v);

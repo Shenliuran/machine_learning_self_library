@@ -1,13 +1,13 @@
 declare class Vector {
     components: number[];
     constructor(components?: number[]);
-    add: (v: Vector) => Vector;
-    multi: (v: Vector) => Vector;
-    norm: () => number;
-    dot: (v: number | Vector) => any;
-    cross: (v: Vector) => Vector;
+    add(v: Vector): Vector;
+    multi(v: Vector): Vector;
+    norm(): number;
+    dot(v: Vector | number): any;
+    cross(v: Vector): Vector;
     toArray: () => number[];
-    static angle: (v: Vector, w: Vector) => number;
+    static angle(v: Vector, w: Vector): number;
 }
 declare class TrainingData {
     fVec: Vector;

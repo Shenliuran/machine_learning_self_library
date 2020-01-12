@@ -75,17 +75,6 @@ const line = function (a: number, b: number, c: number, color: string): void {
     ctx.stroke();
 }
 
-var p = new Perceptron(trainingSet, 0.5);
-console.log(p);
-drawDataSet();
-line(1, 1, -300, "red")
-line(p.vectWeights.components[0], p.vectWeights.components[1], p.paramB, "black");
-// const animate = function (): void {
-//     var p = new Perceptron(trainingSet, 1);
-//     requestAnimationFrame(animate);
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     line(1, 1, -500, "red")
-//     drawDataSet();
-//     line(p.vectWeights.components[0], p.vectWeights.components[1], p.paramB, "black");
-// }
-// animate();
+let inputLayer = new InputLayer();
+let hiddenLayer = new HiddenLayer();
+let outputLayer = new OutputLayer();

@@ -12,7 +12,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd .\\ts;tsc;  cd ..;  webpack .\\dist\\sketch.js --output-path .\\dist --output-filename '[name].bundle.js' --mode development"
   },
   "repository": {
     "type": "git",

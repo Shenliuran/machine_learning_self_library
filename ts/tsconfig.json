@@ -11,10 +11,10 @@
         // "watch": true
     },
     "files": [
+        "component/activation.ts",
         "tools/vector.ts",
         "tools/matrix.ts",
         "component/training-data-type.ts",
-        // "component/perceptron.ts",
         "component/abstract-layer.ts",
         "component/layers.ts",
         "index.ts"

@@ -20,6 +20,9 @@ class HiddenLayer extends AbstractLayer {
         this.compute();
         this.out();
     }
+    public setBias(bias?: number) {
+        this._bias = bias;
+    }
 }
 
 class OutputLayer extends AbstractLayer{

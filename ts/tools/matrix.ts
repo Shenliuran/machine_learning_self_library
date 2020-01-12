@@ -118,12 +118,12 @@ class Matrix {
     public toSheet(): number[] {
         return this.__matrix;
     }
-    public fn(func: (elem: number) => number): Matrix {
+    public fn(func: (elem: number) => number, linearParam: number): Matrix {
         let m = new Matrix();
         m.init(this.__row, this.__column);
         for (let i = 0; i < this.__row; i++)
             for (let j = 0; j < this.__column; j++)
-                m.__matrix[i][j] = func(this.__matrix[i][j]);
+                m.__matrix[i][j] = func(this.__matrix[i][j] + linearParam);
         return m;
     }
 }
